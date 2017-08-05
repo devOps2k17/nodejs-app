@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("devOps2k17/nodejs-app")
+        app = docker.build("manee2k6/nodejs-app")
     }
 
     stage('Test image') {
