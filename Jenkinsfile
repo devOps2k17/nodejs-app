@@ -10,7 +10,8 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("manee2k6/explore")
+        app = docker.build("manee2k6/explore:${env.BUILD_NUMBER}")
+        
     }
 
     stage('Test image') {
