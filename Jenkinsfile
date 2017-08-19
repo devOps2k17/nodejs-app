@@ -32,6 +32,6 @@ node {
             app.push("latest")*/
         
         sh 'docker login -u manee2k6 -p arpitha@17'
-        sh 'docker push manee2k6/explore:dev.${env.BUILD_NUMBER}'
+        sh 'docker push manee2k6/explore:dev'
         }
     }
