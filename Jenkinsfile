@@ -9,7 +9,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        sh 'docker build -f Dockerfile -t manee2k6/explore:${env.BUILD_NUMBER} .'
+        sh 'docker build -f Dockerfile -t manee2k6/explore:dev .'
        // app = docker.build("manee2k6/explore:${env.BUILD_NUMBER}")
         
     }
@@ -32,6 +32,6 @@ node {
             app.push("latest")*/
         
         sh 'docker login -u manee2k6 -p arpitha@17'
-        sh 'docker push manee2k6/explore:${env.BUILD_NUMBER}'
+        sh 'docker push manee2k6/explore:dev.${env.BUILD_NUMBER}'
         }
     }
