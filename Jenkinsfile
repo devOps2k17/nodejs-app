@@ -36,4 +36,3 @@ node {
         sh 'docker push manee2k6/explore:version'
         }
     }
-}
