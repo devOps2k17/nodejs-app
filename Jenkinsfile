@@ -9,8 +9,8 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
-        app = docker.build("manee2k6/explore:${env.BUILD_NUMBER}")
+        sh 'docker build -f dockerfile -t manee2k6/explore:version'
+       // app = docker.build("manee2k6/explore:${env.BUILD_NUMBER}")
         
     }
 
@@ -28,9 +28,12 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        withDockerRegistry([credentialsId: 'docker-hub-credential', url: 'https://hub.docker.com/']) {
-           /* app.push("${env.BUILD_NUMBER}") */
-            app.push("latest")
+       /* withDockerRegistry([credentialsId: 'docker-hub-credential', url: 'https://hub.docker.com/']) {
+            app.push("${env.BUILD_NUMBER}") 
+            app.push("latest")*/
+        
+        sh 'docker login -u manee2k6 -p arpitha@17'
+        sh 'docker push manee2k6/explore:version'
         }
     }
 }
