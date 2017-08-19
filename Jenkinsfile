@@ -30,8 +30,9 @@ node {
        /* withDockerRegistry([credentialsId: 'docker-hub-credential', url: 'https://hub.docker.com/']) {
             app.push("${env.BUILD_NUMBER}") 
             app.push("latest")*/
-        
+        sh 'docker tag manee2k6/explore:dev manee2k6/explore:latest'
         sh 'docker login -u manee2k6 -p arpitha@17'
         sh 'docker push manee2k6/explore:dev'
+        sh 'docker push manee2k6/explore:latest'
         }
     }
